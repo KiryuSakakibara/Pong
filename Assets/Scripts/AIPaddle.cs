@@ -20,4 +20,11 @@ public class AIPaddle : Paddle {
         }
     }
 
+    protected override void ProcessShoot() {
+        if (remainingCooldown <= 0) {
+            bulletPool.SpawnBullet(transform.position, new Vector2(10, 0));
+            remainingCooldown = maxCooldown;
+        }
+    }
+
 }
