@@ -60,5 +60,8 @@ public abstract class Paddle : MonoBehaviour {
 
     public void Reset() {
         health = maxHealth;
+        bulletPool.Reset();
+        remainingCooldown = 0;
+        transform.position = new Vector2(transform.position.x, 0);
     }
 }

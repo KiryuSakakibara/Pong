@@ -18,10 +18,6 @@ public class BulletPool : MonoBehaviour {
         }
     }
 
-    public void AddToPool(GameObject obj) {
-        pool.Enqueue(obj);
-    }
-
     public void SpawnBullet(Vector2 position, Vector2 velocity) {
         // Check if pool is empty for some reason
         if (pool.Count == 0) return;
@@ -31,5 +27,11 @@ public class BulletPool : MonoBehaviour {
         obj.transform.position = position;
         obj.GetComponent<Rigidbody2D>().velocity = velocity;
         pool.Enqueue(obj);
+    }
+
+    public void Reset() {
+        foreach (GameObject obj in pool) {
+            obj.SetActive(false);
+        }
     }
 }
